@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "943083135240",
+    "project_id": "immoroyal-64803",
+    "storage_bucket": "immoroyal-64803.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943083135240:android:b4bf508ae7dcd01b368cbd",
+        "android_client_info": {
+          "package_name": "com.immoroyal.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJwRoILqUIUlcwJikDa4lDJJD8XMj-qUU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943083135240:android:2b8b692c841a315c368cbd",
+        "android_client_info": {
+          "package_name": "com.immoroyal.app.debug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJwRoILqUIUlcwJikDa4lDJJD8XMj-qUU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

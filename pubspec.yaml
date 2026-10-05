@@ -1,0 +1,111 @@
+name: immoroyal
+description: ImmoRoyal — La plateforme immobilière du Bénin
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+flutter_native_splash:
+  color: "#1C1C1E"
+  image: assets/images/splash_logo.png
+  color_dark: "#1C1C1E"
+  image_dark: assets/images/splash_logo.png
+  android_12:
+    color: "#1C1C1E"
+    image: assets/images/splash_logo.png
+    color_dark: "#1C1C1E"
+    image_dark: assets/images/splash_logo.png
+  fullscreen: true
+  # image_scale: 2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # HTTP & API
+  dio: ^5.4.0
+  retrofit: ^4.1.0
+
+  # Auth & stockage
+  flutter_secure_storage: ^10.3.1
+  shared_preferences: ^2.2.2
+
+  # Médias
+  video_player: ^2.8.2
+  chewie: ^1.7.4
+  image_picker: ^1.0.7
+  cached_network_image: ^3.3.1
+  photo_view: ^0.15.0
+
+  # Navigation & State
+  go_router: ^17.3.0
+  provider: ^6.1.2
+
+  # UI
+  google_fonts: ^8.2.0
+  shimmer: ^3.0.0
+  flutter_svg: ^2.0.9
+
+  # Notifications
+  firebase_core: ^4.12.1
+  firebase_messaging: ^16.4.3
+
+  # Divers
+  url_launcher: ^6.2.5
+  intl: ^0.20.3
+  uuid: ^4.3.3
+  connectivity_plus: ^7.3.1
+  flutter_dotenv: ^6.0.1
+
+  # Vidéo miniature
+  video_thumbnail: ^0.5.3
+
+  # Partage
+  share_plus: ^13.3.0
+
+  # Persistance
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+  # Native splash
+  flutter_native_splash: ^2.4.0
+
+  # Audio
+  # record: ^5.1.0          # enregistrement vocal
+  record: ^6.0.0
+  just_audio: ^0.10.6     # lecture des notes vocales
+
+  # barre de navigation
+  google_nav_bar: ^5.0.6
+  characters: ^1.4.0
+
+  # svg icons
+  # flutter_svg: ^2.0.10  # ou dernière version stable
+
+  socket_io_client: ^3.1.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  retrofit_generator: ^10.2.8
+  build_runner: ^2.4.8
+  flutter_launcher_icons: ^0.14.4
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/images/
+    - .env
+
+  fonts:
+    - family: boxicons
+      fonts:
+        - asset: assets/fonts/boxicons.ttf
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
