@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:immoroyal/providers/navbar_provider.dart';
+import 'package:immoroyal/screens/gestion/gerant/groupe_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'core/theme/theme.dart';
@@ -33,12 +34,20 @@ import 'screens/profile/recherches_screen.dart';
 import 'screens/profile/public_screen.dart';
 import 'providers/messages_provider.dart';
 
+import 'screens/gestion/locataire/locataire_onboarding_screen.dart';
+
+import 'providers/gestion_provider.dart';
+import 'providers/locataire_provider.dart';
+
 import 'screens/annonces/annonces_hub_screen.dart';
 import 'screens/gestion/gestion_shell.dart';
 
 import 'core/network/dio_client.dart';
 
 import 'widgets/common/app_shell.dart';
+
+import 'screens/gestion/gerant/bien_form_screen.dart';
+import 'screens/gestion/gerant/bien_detail_screen.dart';
 
 class ImmoRoyalApp extends StatelessWidget {
   const ImmoRoyalApp({super.key});
@@ -56,6 +65,14 @@ class ImmoRoyalApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => SuggestionsProvider()),
         ChangeNotifierProvider(create: (_) => NavBarProvider()),
         ChangeNotifierProvider(create: (_) => MessagesProvider()),
+        ChangeNotifierProxyProvider<AuthProvider, GestionProvider>(
+          create: (_) => GestionProvider(),
+          update: (_, auth, prev) => (prev ?? GestionProvider())..syncAuth(auth.isAuthenticated),
+        ),
+        ChangeNotifierProxyProvider<AuthProvider, LocataireProvider>(
+          create: (_) => LocataireProvider(),
+          update: (_, auth, prev) => (prev ?? LocataireProvider())..syncAuth(auth.isAuthenticated),
+        ),
       ],
       child: _AppRoot(),
     );
@@ -129,7 +146,14 @@ class _AppRootState extends State<_AppRoot> {
         GoRoute(path: '/profil/recherches',       pageBuilder: (ctx, s) => _buildPage(ctx, s, const ProfileRecherchesScreen())),
         GoRoute(path: '/profil/public/:id',       pageBuilder: (ctx, s) => _buildPage(ctx, s, ProfilePublicScreen(id: s.pathParameters['id']!))),
         GoRoute(path: '/recherches', redirect: (_, __) => '/annonces?tab=recherches'),
-
+        GoRoute(path: '/gestion/locataire/onboarding', pageBuilder: (ctx, s) => _buildPage(ctx, s, const LocataireOnboardingScreen())),
+        GoRoute(path: '/gestion/biens/creer',         pageBuilder: (ctx, s) => _buildPage(ctx, s, BienFormScreen(groupeId: s.uri.queryParameters['groupeId']))),
+        GoRoute(path: '/gestion/biens/:id/modifier',  pageBuilder: (ctx, s) => _buildPage(ctx, s, BienFormScreen(bienId: s.pathParameters['id']))),
+        GoRoute(path: '/gestion/biens/:id',           pageBuilder: (ctx, s) => _buildPage(ctx, s, BienDetailScreen(bienId: s.pathParameters['id']!))),        
+        GoRoute(
+          path: '/gestion/groupes/:groupeId',
+          builder: (_, s) => GroupeScreen(groupeId: s.pathParameters['groupeId']!),
+        ),
 
         // Shell avec BottomNav
         StatefulShellRoute.indexedStack(

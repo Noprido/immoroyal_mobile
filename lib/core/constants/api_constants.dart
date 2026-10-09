@@ -39,6 +39,9 @@ class ApiConstants {
   static const String messages         = '/messages';
   static const String conversation     = '/messages/conversation';
 
+  // Endpoints Gestion
+  static const String gestion = '/gestion';
+
   // Storage keys
   static const String jwtKey      = 'immoroyal_jwt';
   static const String userKey     = 'immoroyal_user';

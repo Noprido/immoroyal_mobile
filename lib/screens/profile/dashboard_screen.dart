@@ -77,12 +77,14 @@ class _ProfileDashboardScreenState extends State<ProfileDashboardScreen> {
         );
       }
 
-      if (mounted) setState(() {
-        _annonces   = annonces;
-        _recherches = recherches;
-        _nonLus     = nonLus;
-        _loading    = false;
-      });
+      if (mounted) {
+        setState(() {
+          _annonces   = annonces;
+          _recherches = recherches;
+          _nonLus     = nonLus;
+          _loading    = false;
+        });
+      }
     } catch (_) {
       if (mounted) setState(() => _loading = false);
     }
